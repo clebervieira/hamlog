@@ -1,0 +1,1 @@
+{"QSO": [{"Call Sign": "kg6nui", "Signal Sent": "37", "Signal Received": "48"}]}{"QSO": [{"Call Sign": "w6cbr", "Signal Sent": "59", "Signal Received": "59"}]}{"QSO": [{"Call Sign": "kg6nui", "Signal Sent": "37", "Signal Received": "48"}]}
