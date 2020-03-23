@@ -1,5 +1,5 @@
 import json
-
+from datetime import datetime
 
 def write_qso(call_sign, signal_received, signal_sent):
     data = {}
@@ -7,7 +7,8 @@ def write_qso(call_sign, signal_received, signal_sent):
     data['QSO'].append({
         'Call Sign': call_sign,
         'Signal Sent': signal_sent,
-        'Signal Received': signal_received
+        'Signal Received': signal_received,
+        'Time Stamp': str(datetime.utcnow())
     })
     with open('data.txt', 'a') as outfile:
         json.dump(data, outfile)
