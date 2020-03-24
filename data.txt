@@ -1,1 +1,0 @@
-{"QSO": [{"Call Sign": "w6cbr", "Signal Sent": "59", "Signal Received": "59", "Time Stamp": "2020-03-23 22:23:39.549865"}]}{"QSO": [{"Call Sign": "kg6nui", "Signal Sent": "37", "Signal Received": "48", "Time Stamp": "2020-03-23 22:23:39.550583"}]}
