@@ -22,3 +22,4 @@ def submitqso():
     logQSO.LogNewQSO.write_qso(jsonPost[""],jsonPost["callSign"],jsonPost["signalReceived"],jsonPost["signalSent"])
     return "<h1>QSO sent</h1>"
 
+

@@ -21,5 +21,12 @@
         </div>
     </div>
 </div>
+<h4>QSOs</h4>
+<hr>
+<ul>
+{% for my_qsos in my_qso %}
+{{ my_qsos }}
+{% endfor %}
+</ul>
 <script src="{{  url_for('static', filename='js/app.js')  }}"></script>
 {% endblock %}
