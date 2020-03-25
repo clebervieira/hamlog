@@ -23,10 +23,10 @@
 </div>
 <h4>QSOs</h4>
 <hr>
-<ul>
-{% for view_logs in view_log %}
-{{ view_logs }}
-{% endfor %}
-</ul>
+<pre>
+    <code>
+        {{ view_log }}
+    </code>
+</pre>
 <script src="{{  url_for('static', filename='js/app.js')  }}"></script>
 {% endblock %}
