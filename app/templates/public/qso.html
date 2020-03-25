@@ -24,8 +24,8 @@
 <h4>QSOs</h4>
 <hr>
 <ul>
-{% for my_qsos in my_qso %}
-{{ my_qsos }}
+{% for view_logs in view_log %}
+{{ view_logs }}
 {% endfor %}
 </ul>
 <script src="{{  url_for('static', filename='js/app.js')  }}"></script>

@@ -18,8 +18,9 @@ def addqso():
 
 @app.route('/submitqso', methods=['POST'])
 def submitqso():
+    log = logQSO.LogNewQSO("call_sign", "signal_sent", "signal_received")
     jsonPost=flask.request.json
-    logQSO.LogNewQSO.write_qso(jsonPost[""],jsonPost["callSign"],jsonPost["signalReceived"],jsonPost["signalSent"])
+    log.write_qso(jsonPost["callSign"],jsonPost["signalSent"],jsonPost["signalReceived"])
     return "<h1>QSO sent</h1>"
 
 

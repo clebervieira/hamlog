@@ -9,12 +9,12 @@ def index():
 
 @app.route("/qso")
 def qso():
-    my_qso = logQSO.ReadQSO.read_qso("")
-    return render_template("/public/qso.html", my_qso=my_qso)
+    log = logQSO.LogNewQSO("call_sign", "signal_sent", "signal_received")
+    view_log = log.build_string()
+    return render_template("/public/qso.html", view_log=view_log)
 
 @app.route('/readqso', methods=['GET'])
 def readqso():
-    #jsonPost=flask.request.json
-    #logQSO.LogNewQSO.write_qso(jsonPost[""],jsonPost["callSign"],jsonPost["signalReceived"],jsonPost["signalSent"])
-    my_qso = logQSO.ReadQSO.read_qso("")
-    return my_qso
+    log = logQSO.LogNewQSO("call_sign", "signal_sent", "signal_received")
+    view_log = log.build_string()
+    return view_log
