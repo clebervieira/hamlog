@@ -14,16 +14,13 @@ def home():
 @app.route('/submitqso', methods=['POST'])
 def submitQso():
     jsonPost=flask.request.json
-    logQSO.write_qso(jsonPost["callSign"],jsonPost["signalReceived"],jsonPost["signalSent"])
+    logQSO.LogNewQSO.write_qso(jsonPost[""],jsonPost["callSign"],jsonPost["signalReceived"],jsonPost["signalSent"])
     return "<h1>QSO sent</h1>"
 
 
 @app.route('/showlog', methods=['GET'])
 def showlog():
-    jsonPost = flask.request.json
-    result = logQSO.read_qso()
-    return result
-
+    return "<h1>QSO Log</h1>"
 
 
 app.run()
