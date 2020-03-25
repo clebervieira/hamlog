@@ -1,27 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <title>Index</title>
-</head>
-<body>
-    <table>
-        <tr>
-            <td></td>
-            <td align="center"><h1 style="color: blue">W6CBR HamLog</h1></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td align="center"> <img style="max-width:500px;" src="{{  url_for('static', filename='img/worldMap.png')  }}"></td>
-            <td></td>
-        </tr>
-    </table>
-    <script src="{{  url_for('static', filename='js/app.js')  }}"></script>
-</body>
-</html>
+{% extends "/public/template/public_template.html" %}
+{% block tile %}W6CBR - Home{% endblock %}
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col" align="center">
+            <h1 style="color: blue">W6CBR HamLog</h1>
+        </div>
+        <div class="col">
+        </div>
+    </div>
+        <div class="row">
+        <div class="col">
+        </div>
+        <div class="col" align="center">
+            <img style="max-width:500px;" src="{{  url_for('static', filename='img/worldMap.png')  }}">
+        </div>
+        <div class="col">
+        </div>
+    </div>
+</div>
+<script src="{{  url_for('static', filename='js/app.js')  }}"></script>
+{% endblock %}

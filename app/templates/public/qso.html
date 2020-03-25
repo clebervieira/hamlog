@@ -1,12 +1,12 @@
-{% extends "/dashboard/template/dashboard_template.html" %}
-{% block tile %}W6CBR - Index{% endblock %}
+{% extends "/public/template/public_template.html" %}
+{% block tile %}W6CBR - QSO{% endblock %}
 {% block main %}
 <div class="container">
     <div class="row">
         <div class="col">
         </div>
         <div class="col" align="center">
-            <h4 style="color: red">W6CBR HamLog - Dashboard</h4>
+            <h4 style="color: blue">W6CBR HamLog - QSO List</h4>
         </div>
         <div class="col">
         </div>
@@ -15,7 +15,7 @@
         <div class="col">
         </div>
         <div class="col" align="center">
-            <img style="max-width:500px;" src="{{  url_for('static', filename='img/worldMap.png')  }}">
+            <iframe align="top" frameborder="0" height="500" scrolling="yes" src="https://logbook.qrz.com/lbstat/W6CBR/" width="640"></iframe>
         </div>
         <div class="col">
         </div>
