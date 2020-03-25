@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Index</title>
 </head>
 <body>
-    <h1 style="color: blue">W6CBR HamLog</h1>
-    <p>This is the index page</p>
+    <table>
+        <tr>
+            <td></td>
+            <td align="center"><h1 style="color: blue">W6CBR HamLog</h1></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td align="center"> <img style="max-width:500px;" src="{{  url_for('static', filename='img/worldMap.png')  }}"></td>
+            <td></td>
+        </tr>
+    </table>
+    <script src="{{  url_for('static', filename='js/app.js')  }}"></script>
 </body>
 </html>
