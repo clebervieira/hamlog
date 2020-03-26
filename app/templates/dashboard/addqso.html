@@ -1,15 +1,7 @@
 {% extends "/dashboard/template/dashboard_template.html" %}
-{% block tile %}W6CBR - Add QSO{% endblock %}
 {% block main %}
 <div class="container">
     <div class="row">
-        <div class="col" align="center">
-            <h5 style="color: red">W6CBR HamLog - Add QSO</h5>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-        </div>
         <div class="col">
             <form action="/submitqso_form" method="post">
                 <div class="form-group">
@@ -26,10 +18,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-    </div>
-    <div class="col">
-    </div>
+        </div>
     </div>
 </div>
-<script src="{{  url_for('static', filename='js/app.js')  }}"></script>
 {% endblock %}

@@ -3,17 +3,17 @@ import flask
 
 from app import app
 
-from flask import render_template, request
+from flask import Flask, render_template, request, url_for
 
 
 @app.route("/admin/dashboard")
 def dashboard():
-    return render_template("/dashboard/dashboard.html")
+    return render_template("/dashboard/dashboard.html", title='Dashboard')
 
 
 @app.route("/admin/addqso")
 def addqso():
-    return render_template("/dashboard/addqso.html")
+    return render_template("/dashboard/addqso.html", title='QSO Forms')
 
 
 #TODO: combine submitqso_form and submitqso(api), also prevent form from submitting blank data (form validation)
@@ -31,7 +31,7 @@ def submitqso_form():
 
         log.write_qso(callSign, signalSent, signalReceived)
 
-    return render_template("/dashboard/addqso.html")
+    return render_template("/dashboard/addqso.html", tittle='QSO')
 
 
 @app.route('/submitqso', methods=['POST'])
