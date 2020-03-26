@@ -15,7 +15,8 @@ def dashboard():
 def addqso():
     return render_template("/dashboard/addqso.html")
 
-#TODO: combine submitqso_form and submitqso(api), also prevent form from submitting blank data
+
+#TODO: combine submitqso_form and submitqso(api), also prevent form from submitting blank data (form validation)
 @app.route('/submitqso_form', methods=["GET", "POST"])
 def submitqso_form():
     log = logQSO.LogNewQSO("call_sign", "signal_sent", "signal_received")
