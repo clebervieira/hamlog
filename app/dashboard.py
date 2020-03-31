@@ -2,9 +2,11 @@ import logQSO
 import flask
 
 from app import app
+from app.forms import RegistrationForm, LoginForm
 
-from flask import Flask, render_template, request, url_for
+from flask import render_template, request, url_for
 
+app.config['SECRET_KEY'] = '134460b73094491dc7cce1d6de667009'
 
 @app.route("/admin/dashboard")
 def dashboard():
@@ -42,3 +44,12 @@ def submitqso():
     return "<h1>QSO sent</h1>"
 
 
+@app.route("/admin/register")
+def register():
+    form = RegistrationForm()
+    return render_template('/dashboard/register.html', title='Register', form=form)
+
+@app.route("/admin/login")
+def login():
+    form = LoginForm()
+    return render_template('/dashboard/login.html', title='Login', form=form)

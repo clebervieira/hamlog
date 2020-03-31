@@ -42,5 +42,7 @@ if __name__ == '__main__':
 
 
     #TODO:  filename as parameter
-    #TODO:  split write_qso into 2, create_qso and write_qso
+    #TODO:  split write_qso, create_qso and write_qso
+    #TODO: form validation here
+
 
