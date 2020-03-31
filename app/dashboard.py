@@ -3,10 +3,8 @@ import flask
 
 from app import app
 from app.forms import RegistrationForm, LoginForm
-
 from flask import render_template, request, url_for, flash, redirect
 
-app.config['SECRET_KEY'] = '134460b73094491dc7cce1d6de667009'
 
 @app.route("/admin/dashboard")
 def dashboard():
