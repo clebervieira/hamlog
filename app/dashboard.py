@@ -4,7 +4,7 @@ import flask
 from app import app
 from app.forms import RegistrationForm, LoginForm
 
-from flask import render_template, request, url_for
+from flask import render_template, request, url_for, flash, redirect
 
 app.config['SECRET_KEY'] = '134460b73094491dc7cce1d6de667009'
 
@@ -44,12 +44,21 @@ def submitqso():
     return "<h1>QSO sent</h1>"
 
 
-@app.route("/admin/register")
+@app.route("/admin/register", methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
+    if form.validate_on_submit():
+        flash(f'Account created for {form.username.data}!', 'success')
+        return redirect(url_for('login'))
     return render_template('/dashboard/register.html', title='Register', form=form)
 
-@app.route("/admin/login")
+@app.route("/admin/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    if form.validate_on_submit():
+        if form.email.data == 'clebervieira@gmail.com' and form.password.data == 'chiclete':
+            flash('You have been logged in!', 'success')
+            return redirect(url_for('dashboard'))
+        else:
+            flash('Login Unsuccessful. Please check username and password', 'danger')
     return render_template('/dashboard/login.html', title='Login', form=form)
