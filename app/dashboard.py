@@ -50,6 +50,7 @@ def register():
         return redirect(url_for('login'))
     return render_template('/dashboard/register.html', title='Register', form=form)
 
+
 @app.route("/admin/login", methods=['GET', 'POST'])
 def login():
     form = LoginForm()
