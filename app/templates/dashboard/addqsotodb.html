@@ -1,3 +1,92 @@
 {% extends "/dashboard/template/dashboard_template.html" %}
 {% block main %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Register</legend>
+                <div class="form-group">
+                    {{ form.callsign.label(class="form-control-label") }}
+                    {% if form.callsign.errors %}
+                        {{ form.callsign(class="form-control form-control-lg is-invalid") }}
+                         <div class="invalid-feedback">
+                             {% for error in form.callsign.errors %}
+                                <span>{{ error }}</span>
+                             {% endfor %}
+                         </div>
+                    {% else %}
+                        {{ form.callsign(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.signal_sent.label(class="form-control-label") }}
+                    {% if form.signal_sent.errors %}
+                        {{ form.signal_sent(class="form-control form-control-lg is-invalid") }}
+                         <div class="invalid-feedback">
+                             {% for error in form.signal_sent.errors %}
+                                <span>{{ error }}</span>
+                             {% endfor %}
+                         </div>
+                    {% else %}
+                        {{ form.signal_sent(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.signal_received.label(class="form-control-label") }}
+                    {% if form.signal_received.errors %}
+                        {{ form.signal_received(class="form-control form-control-lg is-invalid") }}
+                         <div class="invalid-feedback">
+                             {% for error in form.signal_received.errors %}
+                                <span>{{ error }}</span>
+                             {% endfor %}
+                         </div>
+                    {% else %}
+                        {{ form.signal_received(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.custom_sent.label(class="form-control-label") }}
+                    {% if form.custom_sent.errors %}
+                        {{ form.custom_sent(class="form-control form-control-lg is-invalid") }}
+                         <div class="invalid-feedback">
+                             {% for error in form.custom_sent.errors %}
+                                <span>{{ error }}</span>
+                             {% endfor %}
+                         </div>
+                    {% else %}
+                        {{ form.custom_sent(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.custom_received.label(class="form-control-label") }}
+                    {% if form.custom_received.errors %}
+                        {{ form.custom_received(class="form-control form-control-lg is-invalid") }}
+                         <div class="invalid-feedback">
+                             {% for error in form.custom_received.errors %}
+                                <span>{{ error }}</span>
+                             {% endfor %}
+                         </div>
+                    {% else %}
+                        {{ form.custom_received(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.frequency_used.label(class="form-control-label") }}
+                    {% if form.frequency_used.errors %}
+                        {{ form.frequency_used(class="form-control form-control-lg is-invalid") }}
+                         <div class="invalid-feedback">
+                             {% for error in form.frequency_used.errors %}
+                                <span>{{ error }}</span>
+                             {% endfor %}
+                         </div>
+                    {% else %}
+                        {{ form.frequency_used(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </form>
+    </div>
 {% endblock %}
