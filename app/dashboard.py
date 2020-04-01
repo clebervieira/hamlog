@@ -23,10 +23,14 @@ def addqso():
 #@login_required
 def addqsotodb():
     form = AddQSOtoDbForm()
+    if form.validate_on_submit():
+        db.session.add(addqsotodb)
+        db.session.commit()
+        flash('QSO added to db!', 'success')
+        return redirect(url_for('addqsotodb'))
     return render_template("/dashboard/addqsotodb.html", title='QSO to db Form', form=form)
 
 
-#TODO: combine submitqso_form and submitqso(api), also prevent form from submitting blank data (form validation)
 @app.route('/submitqso_form', methods=["GET", "POST"])
 def submitqso_form():
     log = logQSO.LogNewQSO("call_sign", "signal_sent", "signal_received")
