@@ -33,7 +33,7 @@ def qso():
 def blog():
     return render_template("/public/blog.html", title='Blog', posts=posts)
 
-
+#POSTMAN route
 @app.route('/readqso', methods=['GET'])
 def readqso():
     log = logQSO.LogNewQSO("call_sign", "signal_sent", "signal_received")

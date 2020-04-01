@@ -3,7 +3,7 @@ import flask
 
 from app import app, db, bcrypt
 from app.forms import RegistrationForm, LoginForm
-from app.models import User, Post
+from app.models import User, Post, Addqsotodb
 from flask import render_template, request, url_for, flash, redirect
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -17,7 +17,12 @@ def dashboard():
 @app.route("/admin/addqso")
 @login_required
 def addqso():
-    return render_template("/dashboard/addqso.html", title='QSO Forms')
+    return render_template("/dashboard/addqso.html", title='QSO Form')
+
+@app.route("/admin/addqsotodb", methods=['GET', 'POST'])
+#@login_required
+def addqsotodb():
+    return render_template("/dashboard/addqsotodb.html", title='QSO to db Form')
 
 
 #TODO: combine submitqso_form and submitqso(api), also prevent form from submitting blank data (form validation)
@@ -37,7 +42,7 @@ def submitqso_form():
 
     return render_template("/dashboard/addqso.html", tittle='QSO')
 
-
+#POSTMAN routes
 @app.route('/submitqso', methods=['POST'])
 def submitqso():
     log = logQSO.LogNewQSO("call_sign", "signal_sent", "signal_received")

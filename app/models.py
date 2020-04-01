@@ -28,3 +28,17 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
+
+
+class Addqsotodb (db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    callsign = db.Column(db.String(20), nullable=False)
+    signal_sent = db.Column(db.String(20), nullable=False)
+    signal_received = db.Column(db.String(20), nullable=False)
+    custom_sent = db.Column(db.String(20), nullable=False)
+    custom_received = db.Column(db.String(20), nullable=False)
+    frequency_used = db.Column(db.String(20), nullable=False)
+    qso_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f"User('{self.callsign}', '{self.signal_sent}', '{self.signal_received}','{self.frequency_used}','{self.qso_date}', '{self.custom_sent}', '{self.custom_received}')"
