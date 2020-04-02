@@ -17,12 +17,12 @@ class RegistrationForm(FlaskForm):
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user:
-            raise ValidationError('Username take, pick new one')
+            raise ValidationError('Username taken, pick new one')
 
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user:
-            raise ValidationError('Email take, pick new one')
+            raise ValidationError('Email taken, pick new one')
 
 
 class LoginForm(FlaskForm):
