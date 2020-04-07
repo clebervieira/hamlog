@@ -7,6 +7,11 @@ from app.models import User, Post, Addqsotodb
 from flask import render_template, request, url_for, flash, redirect
 from flask_login import login_user, current_user, logout_user, login_required
 
+@app.route("/admin/account")
+@login_required
+def account():
+    return render_template("/dashboard/account.html", title='Account')
+
 
 @app.route("/admin/dashboard")
 @login_required
@@ -20,7 +25,7 @@ def addqso():
     return render_template("/dashboard/addqso.html", title='QSO Form')
 
 @app.route("/admin/addqsotodb", methods=['GET', 'POST'])
-#@login_required
+@login_required
 def addqsotodb():
     form = AddQSOtoDbForm()
     if form.validate_on_submit():
@@ -91,3 +96,4 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
