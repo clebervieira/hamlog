@@ -1,22 +1,10 @@
 import logQSO
 from app import app
-from flask import render_template
+from app.models import Post
+from flask import render_template, flash
 
 
-posts = [
-    {
-        'author': 'Cleber Vieira',
-        'title': 'WWDX Contest',
-        'content': 'Info about radio setup and band plan',
-        'date_posted': 'March 17, 2020'
-    },
-    {
-        'author': 'Cleber Vieira',
-        'title': 'WWDX Contest Log',
-        'content': 'List of contact during contest',
-        'date_posted': 'March 20, 2020'
-    },
-]
+
 @app.route("/")
 def index():
     return render_template("/public/index.html", title='Home')
@@ -31,6 +19,7 @@ def qso():
 
 @app.route("/blog")
 def blog():
+    posts = Post.query.all()
     return render_template("/public/blog.html", title='Blog', posts=posts)
 
 #POSTMAN route

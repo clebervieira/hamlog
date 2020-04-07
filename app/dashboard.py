@@ -4,7 +4,7 @@ import secrets
 import os
 from PIL import Image
 from app import app, db, bcrypt
-from app.forms import RegistrationForm, LoginForm, AddQSOtoDbForm, UpdateAccountForm
+from app.forms import RegistrationForm, LoginForm, AddQSOtoDbForm, UpdateAccountForm, PostForm
 from app.models import User, Post, Addqsotodb
 from flask import render_template, request, url_for, flash, redirect
 from flask_login import login_user, current_user, logout_user, login_required
@@ -127,4 +127,22 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+
+@app.route("/post/new", methods=['GET', 'POST'])
+@login_required
+def new_post():
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Post created', 'success')
+        return redirect(url_for('blog'))
+    return render_template('/dashboard/create_post.html', title='New Post', form=form)
+
+@app.route("/post/<int:post_id>")
+def post(post_id):
+    post = Post.query.get_or_404(post_id)
+    return  render_template('/public/post.html', title=post.title, post=post)
 
