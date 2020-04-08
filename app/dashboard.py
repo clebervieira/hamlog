@@ -65,7 +65,7 @@ def addqsotodb():
         db.session.commit()
         flash('QSO added to db!', 'success')
         return redirect(url_for('addqsotodb'))
-    return render_template("/dashboard/addqsotodb.html", title='QSO to db Form', form=form)
+    return render_template("/dashboard/addqsotodb.html", title='QSO to db Form', form=form, legend="Add QSO to database")
 
 
 @app.route('/submitqso_form', methods=["GET", "POST"])
@@ -183,3 +183,40 @@ def delete_post(post_id):
 def contact(contact_id):
     contact = Qso.query.get_or_404(contact_id)
     return render_template('public/contact.html', title=contact.callsign, contact=contact)
+
+
+@app.route("/contact/<int:contact_id>/update", methods=['GET', 'POST'])
+@login_required
+def update_contact(contact_id):
+    contact = Qso.query.get_or_404(contact_id)
+    form = AddQSOtoDbForm()
+    if form.validate_on_submit():
+        contact.callsign = form.callsign.data
+        contact.signal_sent = form.signal_sent.data
+        contact.signal_received = form.signal_received.data
+        contact.custom_sent = form.custom_sent.data
+        contact.custom_received = form.custom_received.data
+        contact.frequency_used = form.frequency_used.data
+        db.session.commit()
+        flash('Contact updated', 'success')
+        return redirect(url_for('contact', contact_id=contact_id))
+    elif request.method == 'GET':
+        form.callsign.data = contact.callsign
+        form.signal_sent.data = contact.signal_sent
+        form.signal_received.data = contact.signal_received
+        form.custom_sent.data = contact.custom_sent
+        form.custom_received.data = contact.custom_received
+        form.frequency_used.data = contact.frequency_used
+    return render_template('/dashboard/addqsotodb.html', title='Update Contact', form=form, legend='Update Contact')
+
+
+@app.route("/contact/<int:contact_id>/delete", methods=['POST'])
+@login_required
+def delete_contact(contact_id):
+    contact = Qso.query.get_or_404(contact_id)
+    db.session.delete(contact)
+    db.session.commit()
+    flash('Contact deleted', 'success')
+    return redirect(url_for('qso_list'))
+
+
