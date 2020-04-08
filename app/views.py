@@ -1,6 +1,6 @@
 import logQSO
 from app import app
-from app.models import Post
+from app.models import Post, Qso
 from flask import render_template, flash
 
 
@@ -15,6 +15,11 @@ def qso():
     log = logQSO.LogNewQSO("call_sign", "signal_sent", "signal_received")
     view_log = log.build_string()
     return render_template("/public/qso.html", view_log=view_log, title='QSO List')
+
+@app.route("/qsolist")
+def qso_list():
+    logs = Qso.query.all()
+    return render_template("/public/qso_list.html", title='QSO List', logs=logs)
 
 
 @app.route("/blog")

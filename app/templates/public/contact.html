@@ -1,0 +1,12 @@
+{% extends "/dashboard/template/dashboard_template.html" %}
+{% block main %}
+<div class="content-section" xmlns="http://www.w3.org/1999/html">
+    <h2>{{ contact.callsign }}</h2>
+    Signal Sent: {{ contact.signal_sent }}</br>
+    Signal Received: {{ contact.signal_received }}</br>
+    Custom Sent: {{ contact.custom_sent }}</br>
+    Custom Received: {{ contact.custom_received }}</br>
+    Frequency: {{ contact.frequency_used }}</br>
+    UTC Date: {{ contact.qso_date }}</br>
+</div>
+{% endblock %}

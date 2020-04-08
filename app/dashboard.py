@@ -5,7 +5,7 @@ import os
 from PIL import Image
 from app import app, db, bcrypt
 from app.forms import RegistrationForm, LoginForm, AddQSOtoDbForm, UpdateAccountForm, PostForm
-from app.models import User, Post, Addqsotodb
+from app.models import User, Post, Qso
 from flask import render_template, request, url_for, flash, redirect, abort
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -60,7 +60,7 @@ def addqso():
 def addqsotodb():
     form = AddQSOtoDbForm()
     if form.validate_on_submit():
-        addqso = Addqsotodb(callsign=form.callsign.data, signal_sent=form.signal_sent.data, signal_received=form.signal_received.data, custom_sent=form.custom_sent.data, custom_received=form.custom_received.data, frequency_used=form.frequency_used.data)
+        addqso = Qso(callsign=form.callsign.data, signal_sent=form.signal_sent.data, signal_received=form.signal_received.data, custom_sent=form.custom_sent.data, custom_received=form.custom_received.data, frequency_used=form.frequency_used.data)
         db.session.add(addqso)
         db.session.commit()
         flash('QSO added to db!', 'success')
@@ -177,3 +177,9 @@ def delete_post(post_id):
     db.session.commit()
     flash('Post deleted', 'success')
     return redirect(url_for('blog'))
+
+
+@app.route("/contact/<int:contact_id>")
+def contact(contact_id):
+    contact = Qso.query.get_or_404(contact_id)
+    return render_template('public/contact.html', title=contact.callsign, contact=contact)

@@ -30,7 +30,7 @@ class Post(db.Model):
         return f"Post('{self.title}', '{self.date_posted}')"
 
 
-class Addqsotodb (db.Model):
+class Qso (db.Model):
     id = db.Column(db.Integer, primary_key=True)
     callsign = db.Column(db.String(20), nullable=False)
     signal_sent = db.Column(db.String(20), nullable=False)
@@ -41,4 +41,4 @@ class Addqsotodb (db.Model):
     qso_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     def __repr__(self):
-        return f"Addqsotodb('{self.callsign}', '{self.signal_sent}', '{self.signal_received}','{self.frequency_used}','{self.qso_date}', '{self.custom_sent}', '{self.custom_received}')"
+        return f"Qso('{self.callsign}', '{self.signal_sent}', '{self.signal_received}','{self.frequency_used}','{self.qso_date}', '{self.custom_sent}', '{self.custom_received}')"

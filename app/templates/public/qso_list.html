@@ -1,0 +1,30 @@
+{% extends "/dashboard/template/dashboard_template.html" %}
+{% block main %}
+    <h3>W6CBR QSO Log</h3>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Log ID</th>
+            <th scope="col">Call Sign</th>
+            <th scope="col">Signal Sent</th>
+            <th scope="col">Signal Received</th>
+            <th scope="col">Frequency</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for log in logs %}
+          <tr>
+            <th scope="row">{{ log.id }}</th>
+            <td><a class="article-title" href="{{url_for('contact', contact_id=log.id)}}">{{ log.callsign }}</a></td>
+            <td>{{ log.signal_sent }}</td>
+            <td>{{ log.signal_received }}</td>
+            <td>{{ log.frequency_used }}</td>
+            <td>{{ log.qso_date.strftime('%Y-%m-%d') }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+  {% endblock %}
+
+>
