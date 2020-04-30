@@ -1,7 +1,7 @@
 import random
 import string
 from ..dummy import DummyTest
-from app.models import Qso
+from app.models import Qso, User
 from app import db
 
 
@@ -55,7 +55,19 @@ class SimpleTests(DummyTest):
         assert (updated_qso.signal_sent == "55")
 
     def test_user_create(self):
-        assert True
+        letters = string.ascii_letters
+        username = (''.join(random.choice(letters) for i in range (10)))
+        email = (''.join(random.choice(letters) for i in range (10)))
+        password = (''.join(random.choice(letters) for i in range (10)))
+
+        user = User(username=username, email=email, password=password)
+        db.session.add(user)
+        db.session.commit()
+
+        read_user = User.query.filter_by(username=username).first()
+        print(read_user)
+        assert (read_user.username == username)
+        return username
 
     def test_user_delete(self):
         assert True
