@@ -69,6 +69,19 @@ class SimpleTests(DummyTest):
         assert (read_user.username == username)
         return username
 
+    def test_user_update(self):
+        letters = string.ascii_letters
+        username = self.test_user_create()
+        email = (''.join(random.choice(letters) for i in range(10)))
+
+        user = User.query.filter_by(username=username).first()
+        user.email = email
+        db.session.commit()
+
+        updated_user = User.query.filter_by(username=user.username).first()
+        print(updated_user)
+        assert (updated_user.email == email)
+
     def test_user_delete(self):
         assert True
 
