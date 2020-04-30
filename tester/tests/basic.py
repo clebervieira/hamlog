@@ -43,9 +43,9 @@ class SimpleTests(DummyTest):
         db.session.delete(read_qso)
         db.session.commit()
         print(read_qso)
-        check_del_call = Qso.query.filter_by(callsign=callsign).first()
-        print(check_del_call)
-        assert (check_del_call == None)
+        check_del_callsign = Qso.query.filter_by(callsign=callsign).first()
+        print(check_del_callsign)
+        assert (check_del_callsign is None)
 
     def test_user_create(self):
         assert True
