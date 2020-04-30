@@ -27,12 +27,9 @@ class SimpleTests(DummyTest):
         custom_sent = 59
         custom_received = 59
         frequency_used = "14.225"
-
         q = Qso(callsign=callsign,  signal_sent=signal_sent, signal_received=signal_received, custom_sent=custom_sent, custom_received=custom_received, frequency_used=frequency_used)
-
         db.session.add(q)
         db.session.commit()
-
         read_qso = Qso.query.filter_by(callsign=callsign).first()
         assert (read_qso == q)
         return callsign
@@ -46,6 +43,16 @@ class SimpleTests(DummyTest):
         check_del_callsign = Qso.query.filter_by(callsign=callsign).first()
         print(check_del_callsign)
         assert (check_del_callsign is None)
+
+    def test_update_db(self):
+        callsign = self.test_db_read_write()
+        read_qso = Qso.query.filter_by(callsign=callsign).first()
+        print(read_qso)
+        read_qso.signal_sent = 55
+        db.session.commit()
+        updated_qso = Qso.query.filter_by(callsign=callsign).first()
+        print(updated_qso)
+        assert (updated_qso.signal_sent == "55")
 
     def test_user_create(self):
         assert True
