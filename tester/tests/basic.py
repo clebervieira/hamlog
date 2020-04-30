@@ -16,6 +16,9 @@ class SimpleTests(DummyTest):
         assert(self.simple)
         self.assertRaisesException(lambda : self.net.show(), msgExpect = "show")
 
+
+    # DB models.py test cases
+    # TODO: testcases db models
     def test_db_read_write(self):
         letters = string.ascii_letters
         callsign = (''.join(random.choice(letters) for i in range (10)))
@@ -33,3 +36,34 @@ class SimpleTests(DummyTest):
         read_qso = Qso.query.filter_by(callsign=callsign).first()
         assert (read_qso == q)
 
+    def test_user_create(self):
+        assert True
+
+    def test_user_delete(self):
+        assert True
+
+    def test_post_create(self):
+        assert True
+
+    def test_post_delete(self):
+        assert True
+
+    #Forms forms.py test cases
+    #TODO: testcase forms
+    def test_RegistrationForm (self):
+        assert False
+
+    def test_LoginForm(self):
+        assert False
+
+    def test_login_form (self):
+        assert True
+
+    def test_add_qso_to_db_form(self):
+        assert True
+
+    def test_update_account_form(self):
+        assert True
+
+    def test_post_form(self):
+        assert True
