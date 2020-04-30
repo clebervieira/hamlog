@@ -35,9 +35,17 @@ class SimpleTests(DummyTest):
 
         read_qso = Qso.query.filter_by(callsign=callsign).first()
         assert (read_qso == q)
+        return callsign
 
     def test_db_delete(self):
-        assert True
+        callsign = self.test_db_read_write()
+        read_qso = Qso.query.filter_by(callsign=callsign).first()
+        db.session.delete(read_qso)
+        db.session.commit()
+        print(read_qso)
+        check_del_call = Qso.query.filter_by(callsign=callsign).first()
+        print(check_del_call)
+        assert (check_del_call == None)
 
     def test_user_create(self):
         assert True
